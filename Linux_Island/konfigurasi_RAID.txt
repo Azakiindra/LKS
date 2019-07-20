@@ -1,0 +1,7 @@
+raid5 adalah suatu cara partisi yang digunakan untuk membackup data yang ada dilinux.
+cara konfigurasi raid5 ini adalah :
+- pertama kalian konfigurasi seperti biasa dulu debian yang kalian install
+- lalu saat pempartisian silahkan kalian pilih primary->beginning
+- lalu pada use as,silahkan ganti extensi format defaultnya (ext4) jadi raid
+- lalu klik oke
+- selesai

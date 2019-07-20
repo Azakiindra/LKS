@@ -1,0 +1,23 @@
+konfigurasi ip di debian :
+- masuk ke pathnya atau bisa langsung konfigurasi langsung.
+- pathnya ada di /etc/network/ dengan nama file interfaces
+- jika sudah masuk ke pathnya,kalian tinggal edit filenya(nano interfaces).
+- atau jika kalian masih didalam path folder yang lain,kalian tinggal arahkan path dan filenya
+(nano /etc/network/interfaces).
+
+keterangan :
+auto (ethernetnya,kalian bisa check nama ethernetnya dengan mengetik "mii-tool" di terminal kalian)
+iface (ethernetnya) inet (modenya,bisa static dan dhcp)
+
+contoh konfigurasi staticnya adalah :
+auto eth0
+iface eth0 inet static
+  address 192.168.1.1 <- ip debiannya
+  network 192.168.1.0 <- networknya
+  netmask 255.255.255.0 <- subnettingnya
+  dns-server 192.168.1.1 <- dns dari si debian
+  gateway 192.168.1.1 <- gateway dari si debian
+  
+contoh konfigurasi dhcpnya adalah :
+auto eth0
+iface eth0 inet dhcp

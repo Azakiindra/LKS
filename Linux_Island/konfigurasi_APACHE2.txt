@@ -1,0 +1,17 @@
+konfigurasi web server/apache2 di debian :
+web server di debian membutuhkan package yang bernama apache2 untuk menjalankannya,oleh karena itu sebelum kita
+melanjutkan langkahnya,kita diharuskan menginstall package apache2 ini.
+
+- install apache2 dengan command "apt-get install apache2 -y"
+- lalu buka path apache2 di /etc/apache2/sites-available (cd /etc/apache2/sites-available/)
+- kalian copykan 000-default.conf sebagai contoh "cp 000-default.conf domain.conf"
+- kalian disablekan 000-default.conf dan kalian enablekan domain.conf kalian :
+a2dissite 000-default.conf
+a2ensite domain.conf
+service apache2 reload
+- lalu buka domain.conf kalian (nano domain.conf)
+- dibawah ServerAdmin tuliskan domain kalian dengan text seperti berikut :  
+  "ServerAlias nama_domain_kalian"
+  dan di DocumentRoot isikan path dimana web kalian akan dibuka,contoh "/var/www/html/zaki"
+  - lalu isikan beberapa kodingan di path web server kalian
+  - selesai

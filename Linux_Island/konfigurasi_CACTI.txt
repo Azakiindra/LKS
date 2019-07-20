@@ -1,0 +1,29 @@
+konfigurasi cacti di debian server :
+note :
+    1.cacti membutuhkan debian 8.7/jessie kaset 1.2.3,jadi diharapkan kalian punya ke-3 kaset tersebut.
+    2.kalian sudah mengistall apache2/webserver kalian sudah konfigurasi beserta dns server.
+    
+cacti adalah salah satu tools untuk memonitoring devices
+nama packagenya adalah cacti (apt-get install cacti -y)
+
+konfigurasi cacti :
+- sesuaikan dengan cd debian 8.7 yang diinginkan
+- jika ada peringatan untuk memasukan password mysql,isikan sesuai apa yang dinginkan.
+- konfirmasi ulang password yang telah kalian masukan tadi,lalu lanjutkan.
+- jika ada peringatan "configure database for cacti with dbconfig-common",isikan/pilih yes.
+- masukan password administratif mysql yang kalian inginkan,jika kalian bingung silahkan isikan password sesuai yang telah kalian
+isi tadi.
+- masukan password untuk cacti,lalu konfirmasi ulang sandi yang telah dimasukan.
+- pilih apache2.
+
+lanjutan cacti :
+- setelah itu kalian buka browser kalian dan ketikan ip kalian dengan ditambahkan /cacti di akhirannya,sebagai contoh
+192.168.129.1/cacti atau kalian bisa panggil menggunakan webserver yang sudah kalian konfigurasi, contoh zak.i/cacti
+- next
+- next
+- finish
+- username isikan "admin" dan password isikan "admin" lalu next.
+- selanjutnya kalian isikan password baru kalian.
+- selesai.
+
+jika kalian ingin melihat graphis dari devicenya,kalian tinggal pilih tab graphs.

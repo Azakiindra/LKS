@@ -1,0 +1,36 @@
+dhcp server di debian :
+sebelum melakukan konfigurasi dhcp server di debian,kita(disini saya menggunakan debian 8.7/jessie) harus menginstall
+package yang bernama isc-dhcp-server untuk mengkonfigurasinya (apt-get install isc-dhcp-server -y)
+
+setelah menginstall package :
+- selanjutnya kalian tinggal atur saja penempatan ip awal dhcp dan ip akhirnya,caranya kalian harus memasuki dulu path dhcp
+atau bisa langsung me-edit file dhcp tersebut.
+  1.path ada di /etc/dhcp/ dan nama filenya adalah dhcpd.conf
+  2.jika langsung edit,kalian cukup ketik perintah berikut "nano /etc/dhcp/dhcpd.conf"
+- sesudahnya masuk didalam file tersebut,cari text sebagai berikut :
+   
+   # A slightly different configuration for an internal subnet.
+      #subnet 10.5.5.0 netmask 255.255.255.224 {
+      #  range 10.5.5.26 10.5.5.30;
+      #  option domain-name-servers ns1.internal.example.org;
+      #  option domain-name "internal.example.org";
+      #  option routers 10.5.5.1;
+      #  option broadcast-address 10.5.5.31;
+      #  default-lease-time 600;
+      #  max-lease-time 7200;
+      #}
+    
+lalu hapus tanda pagar antara # subnet ..... sampai #},contoh sebagai berikut :
+      # A slightly different configuration for an internal subnet.
+        subnet 192.168.129.0 netmask 255.255.255.0 {            -> network ip dan netmask dhcp
+        range 192.168.129.3 192.168.129.254;                    -> range ip dhcp yang akan diberikan ke client
+        option domain-name-servers ns1.internal.example.org;    -> domain debian kalian(jika sudah dikonfigurasi
+        option domain-name "internal.example.org";              -> ip domain/dns server kalian
+        option routers 192.168.129.1;                           -> ip dhcp server/server kalian
+        option broadcast-address 192.168.129.255;               -> ip broadcast dari server
+        default-lease-time 600;                                 -> default waktu ip dhcp diberikan
+        max-lease-time 7200;                                    -> maksimal waktu ip dhcp diberikan
+         }
+- setelah itu simpan dan exit
+- restart dhcp server "/etc/init.d/isc-dhcp-server"
+- selesai

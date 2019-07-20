@@ -1,0 +1,18 @@
+ftp server di debian :
+package yang digunakan adalah proftpd,jadi kita pertama-tama harus install package tersebut
+"apt-get install proftpd -y"
+
+konfigurasi :
+- untuk konfigurasinya,kita masuk ke path ftp servernya terlebih dahulu "cd /etc/proftpd/"
+- lalu edit file yang bernama proftpd.conf (nano proftpd.conf) dan kalian bisa scroll sampai bawah
+(untuk lebih cepat bisa kalian ketik alt+/).
+- lalu tambahkan script sebagai berikut :
+ <Anonymous /path file yang akan di index> ->contohhnya <Anonymous /home/iniftp>
+ User user yang akan digunakan sebagai penerima FTP -> contohnya User iniftp
+ </Anonymous>
+ - lalu restart konfigurasi untuk melihat hasil "/etc/init.d/proftpd restart"
+ - untuk mentestnya,kalian bisa mencobanya langsung ke komputer client (ketik "ftp://ipnya debian").
+ - selesai
+ 
+ note :
+ - jika kalian belum membuat user,maka buatlah usernya dengan command "adduser nama_user".

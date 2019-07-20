@@ -1,0 +1,16 @@
+ssh di debian
+konnfigurasi di ssh debian ada 2 package yang harus diinstall
+1.jika kalian menggunakan debian 8.7/jessie,package yang digunakan adalah package yang bernama ssh
+(apt-get install ssh -y).
+2.jika kalian menggunakan debian 7,kalian membutuhkan package openssh untuk konfigurasinya
+(apt-get install openssh -y).
+
+disini saya akan menjelaskan bagaimana cara mengkonfigurasi ssh di debian 8.7/jessie.
+
+- langkanya adalah kalian install package yang dibutuhkan seperti yang ada diatas.
+- jika kalian ingin mengganti portnya,kalian bisa masuk ke path sshnya lalu mengedit file sshd_config yang ada didalamnya.
+  contoh :
+   1.cd /etc/ssh
+   2.nano sshd_config
+   3.ubah portnya dengan port yang kalian inginkan
+- selesai

@@ -1,0 +1,52 @@
+konfigurasi dns server di debian :
+dns server di debian membutuhkan repository dari bind9,maka dari itu kita harus menginstall
+repository dari bind9 tersebut.
+
+install repository :
+- install bind9 -y <- fungsi dari -y adalah untuk langsung mengkonfirmasi penginstallan dari si package tersebut.
+
+konfigurasi dns :
+- sebelum itu kalian harus mengkonfigurasi resolv.conf dulu untuk mengarahkan permintaan client ke dns server
+yang telah kalian buat,caranya mudah kalian tinggal masuk ke path /etc atau langsung membuka resolv.conf langsung
+yaitu nano /etc/resolv.conf
+
+- setelah itu akan ada text
+search dan nameserver
+kalian cukup isikan sbgai berikut
+search (domain kalian)
+nameserver (ip kalian)
+setelah itu simpan dan keluar.
+- setelah konfigurasi resolv.conf,kalian bisa langsung konfigurasi dns servernya,caranya kalian harus masuk ke
+path dns server tersebut yang berada di /etc/bind
+- sesudahnya masuk ke path dns nya,kalian copykan db.local dan db.127 sebagai contoh :
+cp db.local db.domain
+cp db.127 db.192
+
+- lalu kalian buka db.domain kalian(nano db.domain)
+- ubah text localhost jadi domain kalian sebagai contoh zak.i
+untuk lebih memudahkan kalian mengganti/replace text tersebut,kalian tinggal ketik "ctrl+\" dan ganti
+sesuai nama domain dan jangan lupa default ipnya (127.0.0.1) ubah ke ipnya debian lalu simpan dan keluar.
+- setelah kalian mengkonfigurasi db.domain,langkah selanjutnya adalah kalian harus mengkonfigurasi db.192(nano db.192).
+lalu ganti localhost dengan domain kalian dengan cara yang sama seperti diatas,lalu di xxx IN PTR nama domain
+xxx isikan ip kalian dimulai dari yang terakhir  dengan menuliskan secara terbalik contoh
+192.168.1.1
+xxx = 1.1.168.192
+lalu simpan dan keluar.
+- setelah itu hal yang dilakukan yang terakhir adalah mengkonfigurasi named.conf.local(nano named.conf.local).
+buka named.conf.local dan tuliskan format sebagai berikut :
+
+zone "nama domain" {
+type master;
+file "path db.domain";
+};
+
+zone "(ip network yang terbalik).in-addr.arpa" {
+type master;
+file "path db.192";
+};
+
+- selanjutnya adalah tinggal kalian restart bind9 nya,caranya ada 2,
+1.dengan cara merestart init.d -> /etc/ini.d/bind9 restart
+2. dengan service -> service bind9 restart
+
+- selesai
