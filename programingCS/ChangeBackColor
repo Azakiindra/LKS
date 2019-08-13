@@ -1,1 +1,7 @@
-cara mengganti tiap
+            Random PindahWarna = new Random();
+            Color[] vv = {Color.Black, Color.Green, Color.SeaGreen };
+            label9.BackColor = vv[PindahWarna.Next(0, vv.Length)];
+
+          int a = int.Parse(textBox1.Text); // artinya kita akan mengubah textbox1 textnya kedalam interger
+dan a adalah simpanan intergernya.
+	  label4.Text = c.ToString(); // artinya kita akan mengubah isian interger c kedalam string dan disimpan di label4
